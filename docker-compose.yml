@@ -1,0 +1,17 @@
+services:
+  web:
+    environment:
+      REDIS_HOST: "cache"  
+      
+    container_name: ave
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - 8000:8000
+
+  cache:
+    image: redis:7.2.4-alpine
+    restart: always
+    ports:
+      - 6379:6379
